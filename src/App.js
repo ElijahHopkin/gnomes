@@ -1,10 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 import "./App.css";
 import Kobold from "./images/Kobold.webp";
 import Gnome from "./images/Gnome.jpg";
 import Glossary from "./Glossary.js";
+import Page1 from "./components/Page1";
+import GlossaryList from "./helpers/GlossaryList";
 
 function App() {
+  const [pages, setPages] = useState([])
+  const [activePage, setActivePage] = useState(null)
+  const [defineWord, setDefineWord] = useState(null)
+
+
+  const onClick = (word) => {
+    const definition = GlossaryList.find(item => item.word===word)
+    setDefineWord(definition)
+  }
+
   return (
     <div className="App">
       <header>
@@ -18,6 +30,7 @@ function App() {
         <img id= 'cover-gnome' src={Gnome} alt={"Guillaume GuGnome"} />
         <img id= 'cover-kobold' src={Kobold} alt={"Kobold Heinzelmann"} />
       </div>
+      <Page1 onClick={onClick}/>
       <h5>next</h5>
       {/*write a new component for each page? I can have it clear out the page after we click out of it, or I can write out the 
       whole story as separate 'objects' in a helper file, and have the 'next' button help us progress from one object to the next.
@@ -28,16 +41,7 @@ function App() {
 
       <div>
         <footer>
-          <Glossary />
-          {/* <h4>GLOSSARY</h4>
-          <div>
-            <h5>ad nauseam</h5>
-            <h5>
-              referring to something that has been done or repeated so often
-              that it has become annoying or tiresome.
-            </h5>
-          </div>
-          Definitions from Oxford Languages and Google */}
+          <Glossary defineWord = {defineWord} />
         </footer>
       </div>
     </div>
