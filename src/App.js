@@ -17,13 +17,27 @@ function App() {
     setDefineWord(definition)
   }
 
+
+
+
+
+      
+   
+
+  
+
+  /* 
+  1. work on CSS to enable hover over functionality for specific words that have definitions
+  2. build a stateless component for initialPages. Import all of your page components into this component, to then be imported to App for pages slice of state.
+  3. set onClick on 'next' text and the function will take the id of current activePage, and add one. Set the initial state to the id:0===the coverpage.
+  */
   return (
     <div className="App">
       <header>
-        <h3>EVERY GNOME KNOWS</h3>
+        <h3>EVERY <span className = 'defineWord' onClick={() =>onClick('gnome')}>GNOME</span> KNOWS</h3>
       </header>
       {/* title page*/}
-      <h1>EVERY GNOME KNOWS</h1>
+      <h1>EVERY <span className = 'defineWord' onClick={() =>onClick('gnome')}>GNOME</span> KNOWS</h1>
       <h3>By: Elijah and Alyssa Hopkin</h3>
       <h4>2022</h4>
       <div id='cover-image-container'>
