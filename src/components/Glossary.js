@@ -1,5 +1,5 @@
 import React from 'react'
-import GlossaryList from './helpers/GlossaryList'
+import GlossaryList from '../helpers/GlossaryList'
 export default function Glossary(props) {
 
     

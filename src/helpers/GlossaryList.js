@@ -1,5 +1,5 @@
 
-let data;
+// let data;
 let id = 0 
 
 const getId = () => ++id

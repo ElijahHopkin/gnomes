@@ -9,6 +9,7 @@ function Page1 (props) {
     // function ornament(word) {
     //     word=document.querySelectorAll('p')[0].innerHTML.toLowerCase().replace(/[.,]/g,'').split(' ')
 
+
     //       const definition = GlossaryList.find(item => item.word===word)
     // }
     
@@ -18,6 +19,7 @@ function Page1 (props) {
         <>
         <h1 className= 'page1-H1'> PAGE 1</h1>
         <p>
+          {/* Every gnome knows Climbing knobby knolls of gneiss Causes knocking knees And gnarled knuckles And knotted muscles, Needing kneading for easing their pneumatic breathing. */}
             Every <span className = 'defineWord' onClick = {() => props.onClick('gnome')}>gnome</span> knows<br/>
             Climbing <span className = 'defineWord' onClick = {() => props.onClick('knobby')}>knobby</span> <span className = 'defineWord' onClick = {() => props.onClick('knoll')}>knolls</span> of <span className = 'defineWord' onClick = {() => props.onClick('gneiss')}>gneiss</span>< br/>
             Causes knocking knees <br/>
