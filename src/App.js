@@ -18,16 +18,7 @@ function App() {
 
   // let words = Object.values(text)
 
-  // useEffect(() => {
-  //   for(let i=0; i<text.length; i++) {
-  //     for(word in GlossaryList){
-  //       if( text[i]===word){
-  //         text.splice(i, 1, `<span className = 'defineWord' onClick = {() => props.onClick('${text[i]}')}>${text[i]}</span>`)
-  //       }
-  //     }
-  //   }
-  
-  // }, [])
+
 
   const onClick = (word) => {
     const definition = GlossaryList.find(item => item.word===word)
