@@ -1,6 +1,11 @@
 let id = 0;
 const getId = () => ++id;
 
+/*
+Glossary list utilizes the benefits of idempotence over the value of an array. Rather than have to loop through the array, we are able to quickly scan for a match--like a pairing in an object.
+This is functionally key/value pairs, AND it is iterable.
+*/
+
 const GlossaryList = {
   "ad-nauseam": {
     id: getId(),
