@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import {Link} from 'react-router-dom'
 import "./App.css";
 import Kobold from "./images/Kobold.webp";
 import Gnome from "./images/Gnome.jpg";
@@ -8,26 +9,29 @@ import GlossaryList from "./helpers/GlossaryList";
 import Pages from "./helpers/Pages";
 import PageText from'./components/PageText'
 
+
 function App() {
   const [pages, setPages] = useState([])
-  const [activePage, setActivePage] = useState({count:0, text:null})
-  const [defineWord, setDefineWord] = useState(null)
+  const [activePage, setActivePage] = useState({count:0, text:{pageId:0, page:'fun story'}})
+  const [defineWord, setDefineWord] = useState({})
 
   // const text=document.querySelectorAll('p')[0].innerHTML.toLowerCase().replace(/[.,]/g,'').split(' ')
   // console.log(typeof text)
 
   // let words = Object.values(text)
 
+  useEffect(() => {
+    console.log(defineWord)
+  }, [defineWord])
 
-
-  const onClick = (word) => {
-    const definition = GlossaryList.find(item => item.word===word)
-    // console.log(definition)
-    setDefineWord(definition)
+  const defineClick = (word) => {
+    // const definition = GlossaryList.find(item => item.word===word)
+    console.log(word)
+    setDefineWord(GlossaryList[word])
   }
   // console.log(defineWord)
 
-  // console.log(typeof words)
+  console.log(activePage.text.page?.replace(/[.,]/g,''))
 //   function ornament(word) {
 //     word=document.querySelectorAll('p')[0].innerHTML.toLowerCase().replace(/[.,]/g,'').split(' ')
 
@@ -39,7 +43,8 @@ function App() {
 const newPage= () => {
     //need a conditional to stop the counter from going beyond the end of the book. It will obviously be higher than the current max
     if(activePage.count<5){
-      let displayPage= Pages.find(item => item.pageId===activePage.count +1)
+      let displayPage=  Pages[activePage.count]   
+      // Pages.find(item => item.pageId===activePage.count +1)
       setActivePage({
       ...activePage,
       count:activePage.count+ 1,
@@ -64,10 +69,10 @@ const newPage= () => {
   return (
     <div className="App">
       <header>
-        <h3>EVERY <span className = 'defineWord' onClick={() =>onClick('gnome')}>GNOME</span> KNOWS</h3>
+        <h3>EVERY <span className = 'defineWord' onClick={() =>defineClick('gnome')}>GNOME</span> KNOWS</h3>
       </header>
       {/* title page*/}
-      <h1>EVERY <span className = 'defineWord' onClick={() =>onClick('gnome')}>GNOME</span> KNOWS</h1>
+      <h1>EVERY <span className = 'defineWord' onClick={() =>defineClick('gnome')}>GNOME</span> KNOWS</h1>
       <h3>By: Elijah and Alyssa Hopkin</h3>
       <h4>2022</h4>
       <div id='cover-image-container'>
@@ -75,7 +80,7 @@ const newPage= () => {
         <img id= 'cover-kobold' src={Kobold} alt={"Kobold Heinzelmann"} />
       </div>
       <PageText  
-      onClick={onClick} 
+      defineClick={defineClick} 
       activePage={activePage}
       setActivePage= {setActivePage}
       />
